@@ -46,7 +46,12 @@ class CereApp : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        webview.loadUrl("http://6527c6acb350.ngrok.io")
+        webview.settings.javaScriptEnabled = true
+        val context = getContext()
+        if (context != null) {
+            webview.addJavascriptInterface(WebAppInterface(context), "Android")
+            webview.loadUrl("http://6527c6acb350.ngrok.io")
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
