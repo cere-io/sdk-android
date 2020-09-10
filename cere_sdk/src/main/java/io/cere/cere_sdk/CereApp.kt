@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,17 +28,23 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CereApp : Fragment() {
+
+    private val TAG = this::class.java.simpleName
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
 
     private class MyWebViewClient : WebViewClient() {
+        private val TAG = this::class.java.simpleName
         override fun onPageFinished(view: WebView?, url: String?) {
+            Log.e(TAG, "page finished")
+            /*
             view?.evaluateJavascript("(async function() { console.log('page loaded'); cereSDK.sendEvent('APP_LAUNCHED', {'locationId': 10}); return 'todo'; })();")
             { value ->
                 println(value);
-            }
+            }*/
         }
     }
 
@@ -78,8 +85,17 @@ class CereApp : Fragment() {
 
     fun init(appId: String, externalUserId: String) {
         val url = "https://6527c6acb350.ngrok.io/?appId=${appId}&externalUserId=${externalUserId}"
+        Log.e(TAG, "load url ${url}")
         webview.loadUrl(url)
         //listener?.onFragmentInteraction(uri)
+    }
+
+    fun sendEvent() {
+        //todo no evaulteJavascript
+        webview?.evaluateJavascript("(async function() { console.log('send event'); cereSDK.sendEvent('APP_LAUNCHED_TEST', {'locationId': 10}); return 'todo'; })();")
+        { value ->
+            println(value)
+        }
     }
 
     override fun onAttach(context: Context) {
