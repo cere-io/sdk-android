@@ -2,12 +2,16 @@ package io.cere.cere_sdk
 
 import android.content.Context
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_cere_app.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +32,15 @@ class CereApp : Fragment() {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
 
+    private class MyWebViewClient : WebViewClient() {
+        override fun onPageFinished(view: WebView?, url: String?) {
+            view?.evaluateJavascript("(async function() { console.log('page loaded'); cereSDK.sendEvent('APP_LAUNCHED', {'locationId': 10}); return 'todo'; })();")
+            { value ->
+                println(value);
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -47,16 +60,26 @@ class CereApp : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         webview.settings.javaScriptEnabled = true
+        webview.settings.domStorageEnabled = true
+        webview.settings.databaseEnabled = true
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {//todo kitkat is 19
+            webview.settings.setDatabasePath("/data/data/" + webview.context.packageName + "/databases/")
+        }
+        webview.webViewClient = MyWebViewClient()
         val context = getContext()
         if (context != null) {
             webview.addJavascriptInterface(WebAppInterface(context), "Android")
-            webview.loadUrl("http://6527c6acb350.ngrok.io")
         }
+
+        //webview.createWebMessageChannel()
+        //webview.postWebMessage()
+
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
+    fun init(appId: String, externalUserId: String) {
+        val url = "https://6527c6acb350.ngrok.io/?appId=${appId}&externalUserId=${externalUserId}"
+        webview.loadUrl(url)
+        //listener?.onFragmentInteraction(uri)
     }
 
     override fun onAttach(context: Context) {
