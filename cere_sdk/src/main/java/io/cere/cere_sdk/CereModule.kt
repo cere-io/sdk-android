@@ -16,10 +16,16 @@ class CereModule {
     }
 
     companion object Factory {
+        @Volatile
+        private var instance: CereModule? = null
         @JvmStatic fun init(context: Context, appId: String, externalUserId: String): CereModule {
             val module = CereModule()
             module.init2(context, appId, externalUserId)
+            instance = module
             return module
+        }
+        @JvmStatic fun getInstance(): CereModule? {
+            return instance
         }
     }
 
@@ -29,6 +35,11 @@ class CereModule {
     var webview: WebView? = null
     var appId: String? = null
     var externalUserId: String? = null
+
+
+    fun getWebview2(): WebView? {
+        return webview;
+    }
 
     private fun init2(context: Context, appId: String, externalUserId: String) {
         this.context = context
@@ -45,6 +56,8 @@ class CereModule {
         this.webview?.settings?.javaScriptEnabled = true
         this.webview?.settings?.domStorageEnabled = true
         this.webview?.settings?.databaseEnabled = true
+        WebView.setWebContentsDebuggingEnabled(true)//todo
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             webview?.settings?.setDatabasePath("/data/data/" + this.webview?.context?.packageName + "/databases/")
         }
