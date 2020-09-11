@@ -55,4 +55,12 @@ class CereModule {
             this.webview?.addJavascriptInterface(WebAppInterface(context), "Android")
         }
     }
+
+    fun sendEvent() {
+        //todo no evaluateJavascript
+        webview?.evaluateJavascript("(async function() { console.log('send event dialog'); cereSDK.sendEvent('APP_LAUNCHED_TEST', {'locationId': 10}); return 'todo'; })();")
+        { value ->
+            println(value)
+        }
+    }
 }
