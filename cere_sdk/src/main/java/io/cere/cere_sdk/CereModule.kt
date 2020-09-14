@@ -35,6 +35,7 @@ class CereModule {
     var webview: WebView? = null
     var appId: String? = null
     var externalUserId: String? = null
+    val baseUrl: String = "https://8793d1333788.ngrok.io"
 
 
     fun getWebview2(): WebView? {
@@ -46,7 +47,7 @@ class CereModule {
         configureWebView()
         this.appId = appId
         this.externalUserId = externalUserId
-        val url = "https://6527c6acb350.ngrok.io/?appId=${appId}&externalUserId=${externalUserId}"
+        val url = "${baseUrl}/?appId=${appId}&externalUserId=${externalUserId}"
         Log.e(TAG, "load url ${url}")
         this.webview?.loadUrl(url)
     }
