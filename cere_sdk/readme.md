@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
 Anywhere from your app, call cereModule.sendEvent to trigger your event with custom payload.
 
+For quick integration test, you can use "APP_LAUNCHED_TEST" event, which will trigger display of "Hello world!" text inside android modal dialog.
+
 ```java
   this.cereModule.sendEvent("APP_LAUNCHED_TEST", "{}");
 ```
