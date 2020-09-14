@@ -6,6 +6,6 @@
     <activity
         android:name=".WebviewActivity"
         android:excludeFromRecents="true"
-        android:theme="@style/Theme.AppCompat.Dialog"/>
+        android:theme="@style/WidgetDialog"/>
   </application>
 </manifest>
