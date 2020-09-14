@@ -11,7 +11,7 @@ class WebAppInterface(private val mContext: Context) {
 
     @JavascriptInterface
     fun engagementReceived() {
-        Log.e(TAG, "engagement received on android")
+        Log.i(TAG, "engagement received on android")
         val intent = Intent(mContext, WebviewActivity::class.java)
         mContext.startActivity(intent)
     }

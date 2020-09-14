@@ -10,7 +10,7 @@ class CereModule {
     private class MyWebViewClient : WebViewClient() {
         private val TAG = this::class.java.simpleName
         override fun onPageFinished(view: WebView?, url: String?) {
-            Log.e(TAG, "page finished")
+            Log.i(TAG, "page finished")
         }
     }
 
@@ -34,7 +34,7 @@ class CereModule {
     var webview: WebView? = null
     var appId: String? = null
     var externalUserId: String? = null
-    val baseUrl: String = "https://8793d1333788.ngrok.io"
+    private val baseUrl: String = "https://8793d1333788.ngrok.io"
 
 
     fun getWebview2(): WebView? {
@@ -47,7 +47,7 @@ class CereModule {
         this.appId = appId
         this.externalUserId = externalUserId
         val url = "${baseUrl}/?appId=${appId}&externalUserId=${externalUserId}"
-        Log.e(TAG, "load url ${url}")
+        Log.i(TAG, "load url ${url}")
         this.webview?.loadUrl(url)
     }
 
@@ -56,7 +56,7 @@ class CereModule {
         this.webview?.settings?.javaScriptEnabled = true
         this.webview?.settings?.domStorageEnabled = true
         this.webview?.settings?.databaseEnabled = true
-        WebView.setWebContentsDebuggingEnabled(true)//todo
+        //WebView.setWebContentsDebuggingEnabled(true)
 
         this.webview?.webViewClient = MyWebViewClient()
 
