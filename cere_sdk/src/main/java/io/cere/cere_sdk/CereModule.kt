@@ -70,9 +70,9 @@ class CereModule {
         }
     }
 
-    fun sendEvent() {
-        //todo no evaluateJavascript
-        webview?.evaluateJavascript("(async function() { console.log('send event dialog'); cereSDK.sendEvent('APP_LAUNCHED_TEST', {'locationId': 10}); return 'todo'; })();")
+    fun sendEvent(eventType: String, payload: String) {
+        val script: String = "(async function() { console.log('send event dialog'); cereSDK.sendEvent('${eventType}', ${payload}); return 'todo'; })();"
+        webview?.evaluateJavascript(script)
         { value ->
             println(value)
         }
