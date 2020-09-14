@@ -67,10 +67,10 @@ class CereModule {
     }
 
     fun sendEvent(eventType: String, payload: String) {
-        val script: String = "(async function() { console.log('send event dialog'); cereSDK.sendEvent('${eventType}', ${payload}); return 'todo'; })();"
+        val script = "(async function() { console.log('send event dialog'); return cereSDK.sendEvent('${eventType}', ${payload}).then(() => {console.log(`event ${eventType} sent`);}).catch(err => {console.log(`${eventType} sending error` + err);});})();"
         webview?.evaluateJavascript(script)
-        { value ->
-            println(value)
+        { _ ->
+            Log.i(TAG, "send event $eventType executed")
         }
     }
 }
