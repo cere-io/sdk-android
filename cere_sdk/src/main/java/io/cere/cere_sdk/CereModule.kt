@@ -1,7 +1,6 @@
 package io.cere.cere_sdk
 
 import android.content.Context
-import android.os.Build
 import android.util.Log
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -59,9 +58,6 @@ class CereModule {
         this.webview?.settings?.databaseEnabled = true
         WebView.setWebContentsDebuggingEnabled(true)//todo
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            webview?.settings?.setDatabasePath("/data/data/" + this.webview?.context?.packageName + "/databases/")
-        }
         this.webview?.webViewClient = MyWebViewClient()
 
         val context = this.context
