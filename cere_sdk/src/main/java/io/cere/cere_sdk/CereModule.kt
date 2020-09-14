@@ -19,7 +19,7 @@ class CereModule {
         private var instance: CereModule? = null
         @JvmStatic fun init(context: Context, appId: String, externalUserId: String): CereModule {
             val module = CereModule()
-            module.init2(context, appId, externalUserId)
+            module.initialise(context, appId, externalUserId)
             instance = module
             return module
         }
@@ -37,11 +37,7 @@ class CereModule {
     private val baseUrl: String = "https://8793d1333788.ngrok.io"
 
 
-    fun getWebview2(): WebView? {
-        return webview;
-    }
-
-    private fun init2(context: Context, appId: String, externalUserId: String) {
+    private fun initialise(context: Context, appId: String, externalUserId: String) {
         this.context = context
         configureWebView()
         this.appId = appId
