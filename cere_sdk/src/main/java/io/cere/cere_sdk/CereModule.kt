@@ -34,7 +34,7 @@ class CereModule {
     var webview: WebView? = null
     var appId: String? = null
     var externalUserId: String? = null
-    private val baseUrl: String = "https://8793d1333788.ngrok.io"
+    private val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
 
 
     private fun initialise(context: Context, appId: String, externalUserId: String) {
@@ -42,7 +42,7 @@ class CereModule {
         configureWebView()
         this.appId = appId
         this.externalUserId = externalUserId
-        val url = "${baseUrl}/?appId=${appId}&externalUserId=${externalUserId}"
+        val url = "${baseUrl}?appId=${appId}&externalUserId=${externalUserId}&platform=android"
         Log.i(TAG, "load url ${url}")
         this.webview?.loadUrl(url)
     }
@@ -52,7 +52,7 @@ class CereModule {
         this.webview?.settings?.javaScriptEnabled = true
         this.webview?.settings?.domStorageEnabled = true
         this.webview?.settings?.databaseEnabled = true
-        //WebView.setWebContentsDebuggingEnabled(true)
+        WebView.setWebContentsDebuggingEnabled(true)
 
         this.webview?.webViewClient = MyWebViewClient()
 
