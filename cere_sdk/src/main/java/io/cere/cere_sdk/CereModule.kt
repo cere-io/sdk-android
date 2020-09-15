@@ -34,7 +34,7 @@ class CereModule {
     var webview: WebView? = null
     var appId: String? = null
     var externalUserId: String? = null
-    private val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
+    private val baseUrl: String = "http://sdk-common.cere.io.s3-website-us-west-2.amazonaws.com/native.html"
 
 
     private fun initialise(context: Context, appId: String, externalUserId: String) {
