@@ -10,12 +10,15 @@ import kotlinx.android.synthetic.main.webview_activity.*
 
 
 class WebviewActivity : AppCompatActivity() {
-    var webview: WebView? = CereModule.getInstance()?.webview
+
+    var webview: WebView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.webview_activity)
         this.setFinishOnTouchOutside(true)
         attachBridgeView()
+        this.webview = CereModule.getInstance(this.application).webview
     }
 
     private fun attachBridgeView() {

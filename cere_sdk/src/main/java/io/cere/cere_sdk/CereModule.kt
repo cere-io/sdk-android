@@ -1,5 +1,6 @@
 package io.cere.cere_sdk
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -11,31 +12,34 @@ enum class InitStatus {
     Uninitialised, Initialising, Initialised
 }
 
-class CereModule {
+class CereModule(private val context: Context) {
 
     private class MyWebViewClient : WebViewClient() {
         private val TAG = this::class.java.simpleName
         override fun onPageFinished(view: WebView?, url: String?) {
-            Log.i(TAG, "page finished")
+            Log.i(TAG, "page finished 2")
         }
     }
 
     companion object Factory {
         @Volatile
         private var instance: CereModule? = null
-        @JvmStatic fun init(context: Context, appId: String, externalUserId: String): CereModule {
-            val module = CereModule()
-            module.initialise(context, appId, externalUserId)
+        @JvmStatic private fun make(context: Context): CereModule {
+            val module = CereModule(context).configureWebView()
             instance = module
             return module
         }
-        @JvmStatic fun getInstance(): CereModule? {
-            return instance
+        @JvmStatic fun getInstance(application: Application): CereModule {
+            val inst = this.instance
+            if (inst != null) {
+                return inst
+            } else {
+                return make(application.applicationContext)
+            }
         }
     }
 
     private val TAG = "CereModule"
-    private var context: Context? = null
 
     var webview: WebView? = null
     var appId: String? = null
@@ -47,9 +51,7 @@ class CereModule {
     private val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
 
 
-    private fun initialise(context: Context, appId: String, integrationPartnerUserId: String) {
-        this.context = context
-        configureWebView()
+    fun init(appId: String, integrationPartnerUserId: String) {
         this.appId = appId
         this.integrationPartnerUserId = integrationPartnerUserId
         val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=v1.0.0"
@@ -58,19 +60,17 @@ class CereModule {
         this.webview?.loadUrl(url)
     }
 
-    private fun configureWebView() {
-        this.webview = WebView(this.context)
-        this.webview?.settings?.javaScriptEnabled = true
-        this.webview?.settings?.domStorageEnabled = true
-        this.webview?.settings?.databaseEnabled = true
+    private fun configureWebView(): CereModule {
+        val webview = WebView(context)
+        webview.settings?.javaScriptEnabled = true
+        webview.settings?.domStorageEnabled = true
+        webview.settings?.databaseEnabled = true
         WebView.setWebContentsDebuggingEnabled(true)
 
-        this.webview?.webViewClient = MyWebViewClient()
-
-        val context = this.context
-        if (context != null) {
-            this.webview?.addJavascriptInterface(this, "Android")
-        }
+        webview.webViewClient = MyWebViewClient()
+        webview.addJavascriptInterface(this, "Android")
+        this.webview = webview
+        return this
     }
 
     fun sendEvent(eventType: String, payload: String) {
@@ -85,7 +85,7 @@ class CereModule {
     fun engagementReceived() {
         Log.i(TAG, "engagement received on android")
         val intent = Intent(context, WebviewActivity::class.java)
-        context?.startActivity(intent)
+        context.startActivity(intent)
     }
 
     @JavascriptInterface
