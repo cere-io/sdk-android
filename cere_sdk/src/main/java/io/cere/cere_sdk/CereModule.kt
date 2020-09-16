@@ -9,7 +9,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 
 enum class InitStatus {
-    Uninitialised, Initialising, Initialised
+    Uninitialised, Initialising, Initialised, InitialiseError
 }
 
 class CereModule(private val context: Context) {
@@ -92,5 +92,11 @@ class CereModule(private val context: Context) {
     fun sdkInitialized() {
         Log.i(TAG, "sdk initialised")
         this.initStatus = InitStatus.Initialised
+    }
+
+    @JavascriptInterface
+    fun sdkInitializedError() {
+        Log.i(TAG, "sdk initialise error")
+        this.initStatus = InitStatus.InitialiseError
     }
 }
