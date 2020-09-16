@@ -33,16 +33,16 @@ class CereModule {
 
     var webview: WebView? = null
     var appId: String? = null
-    var externalUserId: String? = null
-    private val baseUrl: String = "http://sdk-common.cere.io.s3-website-us-west-2.amazonaws.com/native.html"
+    var integrationPartnerUserId: String? = null
+    private val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
 
 
-    private fun initialise(context: Context, appId: String, externalUserId: String) {
+    private fun initialise(context: Context, appId: String, integrationPartnerUserId: String) {
         this.context = context
         configureWebView()
         this.appId = appId
-        this.externalUserId = externalUserId
-        val url = "${baseUrl}?appId=${appId}&externalUserId=${externalUserId}&platform=android"
+        this.integrationPartnerUserId = integrationPartnerUserId
+        val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=v1.0.0"
         Log.i(TAG, "load url ${url}")
         this.webview?.loadUrl(url)
     }
@@ -58,7 +58,7 @@ class CereModule {
 
         val context = this.context
         if (context != null) {
-            this.webview?.addJavascriptInterface(WebAppInterface(context), "Android")
+            this.webview?.addJavascriptInterface(WebAppInterface(context, this), "Android")
         }
     }
 
