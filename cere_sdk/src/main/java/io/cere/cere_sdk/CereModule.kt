@@ -1,9 +1,15 @@
 package io.cere.cere_sdk
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
+import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
+
+enum class InitStatus {
+    Uninitialised, Initialising, Initialised
+}
 
 class CereModule {
 
@@ -34,6 +40,10 @@ class CereModule {
     var webview: WebView? = null
     var appId: String? = null
     var integrationPartnerUserId: String? = null
+    private var initStatus: InitStatus = InitStatus.Uninitialised
+    fun getInitStatus(): InitStatus {
+        return this.initStatus
+    }
     private val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
 
 
@@ -44,6 +54,7 @@ class CereModule {
         this.integrationPartnerUserId = integrationPartnerUserId
         val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=v1.0.0"
         Log.i(TAG, "load url ${url}")
+        this.initStatus = InitStatus.Initialising
         this.webview?.loadUrl(url)
     }
 
@@ -58,7 +69,7 @@ class CereModule {
 
         val context = this.context
         if (context != null) {
-            this.webview?.addJavascriptInterface(WebAppInterface(context, this), "Android")
+            this.webview?.addJavascriptInterface(this, "Android")
         }
     }
 
@@ -68,5 +79,18 @@ class CereModule {
         { _ ->
             Log.i(TAG, "send event $eventType executed")
         }
+    }
+
+    @JavascriptInterface
+    fun engagementReceived() {
+        Log.i(TAG, "engagement received on android")
+        val intent = Intent(context, WebviewActivity::class.java)
+        context?.startActivity(intent)
+    }
+
+    @JavascriptInterface
+    fun sdkInitialized() {
+        Log.i(TAG, "sdk initialised")
+        this.initStatus = InitStatus.Initialised
     }
 }
