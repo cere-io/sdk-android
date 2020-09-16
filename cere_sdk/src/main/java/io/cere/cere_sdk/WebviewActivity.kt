@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.webview_activity.*
 
 class WebviewActivity : AppCompatActivity() {
 
-    var webview: WebView? = null
+    lateinit var webview: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

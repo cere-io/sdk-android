@@ -7,9 +7,12 @@ import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 
+const val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
+
 class CereModule(private val context: Context) {
 
-    companion object Factory {
+    companion object {
+        const val TAG = "CereModule"
         @Volatile
         private var instance: CereModule? = null
         @JvmStatic private fun make(context: Context): CereModule {
@@ -27,17 +30,15 @@ class CereModule(private val context: Context) {
         }
     }
 
-    private val TAG = "CereModule"
 
-    var webview: WebView? = null
-    var appId: String? = null
-    var integrationPartnerUserId: String? = null
+    lateinit var webview: WebView
+    private lateinit var appId: String
+    private lateinit var integrationPartnerUserId: String
+
     private var initStatus: InitStatus = InitStatus.Uninitialised
     fun getInitStatus(): InitStatus {
         return this.initStatus
     }
-    private val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
-
 
     fun init(appId: String, integrationPartnerUserId: String) {
         this.appId = appId
