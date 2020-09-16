@@ -63,7 +63,17 @@ class CereModule(private val context: Context) {
 
     fun sendEvent(eventType: String, payload: String) {
         if (this.initStatus == InitStatus.Initialised) {
-            val script = "(async function() { console.log('send event dialog'); return cereSDK.sendEvent('${eventType}', ${payload}).then(() => {console.log(`event ${eventType} sent`);}).catch(err => {console.log(`${eventType} sending error` + err);});})();"
+            val script = """
+                (async function() {
+                    console.log('send event dialog');
+                    return cereSDK.sendEvent('${eventType}', ${payload}).
+                        then(() => {
+                            console.log(`event ${eventType} sent`);
+                        }).
+                        catch(err => {
+                            console.log(`${eventType} sending error` + err);
+                        });
+                })();""".trimIndent()
             webview?.evaluateJavascript(script)
             { _ ->
                 Log.i(TAG, "send event $eventType executed")
