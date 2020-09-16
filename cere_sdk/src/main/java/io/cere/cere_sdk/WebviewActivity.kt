@@ -17,8 +17,8 @@ class WebviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.webview_activity)
         this.setFinishOnTouchOutside(true)
-        attachBridgeView()
         this.webview = CereModule.getInstance(this.application).webview
+        attachBridgeView()
     }
 
     private fun attachBridgeView() {
