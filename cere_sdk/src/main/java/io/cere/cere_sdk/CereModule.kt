@@ -8,13 +8,6 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
-sealed class InitStatus {
-    object Uninitialised : InitStatus()
-    object Initialising : InitStatus()
-    object Initialised : InitStatus()
-    data class InitialiseError(@JvmField val error: String) : InitStatus()
-}
-
 class CereModule(private val context: Context) {
 
     private class MyWebViewClient : WebViewClient() {
