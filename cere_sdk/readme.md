@@ -1,5 +1,10 @@
 # Setup
 
+Minimal supported android SDK version is KITKAT.
+```
+minSdkVersion 19
+```
+
 Add kotlin library and cere_sdk library dependencies to your /app/build.gradle file.
 
 ```
@@ -19,6 +24,8 @@ import io.cere.cere_sdk.CereModule;
 
 Call init method on CereModule with appId and externalUserId, inside MainActivity 
 
+todo: add links to javadoc from readme
+
 ```java
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.cereModule = CereModule.init(getApplicationContext(), "242", "sdfsdfsdf3243rfsd");
+        this.cereModule = CereModule.init(getApplicationContext(), "242", "userId");
     }   
 }
 ```
