@@ -8,8 +8,11 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
-enum class InitStatus {
-    Uninitialised, Initialising, Initialised, InitialiseError
+sealed class InitStatus {
+    object Uninitialised : InitStatus()
+    object Initialising : InitStatus()
+    object Initialised : InitStatus()
+    data class InitialiseError(@JvmField val error: String) : InitStatus()
 }
 
 class CereModule(private val context: Context) {
@@ -97,8 +100,8 @@ class CereModule(private val context: Context) {
     }
 
     @JavascriptInterface
-    fun sdkInitializedError() {
-        Log.i(TAG, "sdk initialise error")
-        this.initStatus = InitStatus.InitialiseError
+    fun sdkInitializedError(error: String) {
+        Log.i(TAG, "sdk initialise error: $error")
+        this.initStatus = InitStatus.InitialiseError(error)
     }
 }
