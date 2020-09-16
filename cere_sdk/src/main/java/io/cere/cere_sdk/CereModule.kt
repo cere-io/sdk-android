@@ -6,16 +6,8 @@ import android.content.Intent
 import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
-import android.webkit.WebViewClient
 
 class CereModule(private val context: Context) {
-
-    private class MyWebViewClient : WebViewClient() {
-        private val TAG = this::class.java.simpleName
-        override fun onPageFinished(view: WebView?, url: String?) {
-            Log.i(TAG, "page finished 2")
-        }
-    }
 
     companion object Factory {
         @Volatile
@@ -63,7 +55,6 @@ class CereModule(private val context: Context) {
         webview.settings?.databaseEnabled = true
         WebView.setWebContentsDebuggingEnabled(true)
 
-        webview.webViewClient = MyWebViewClient()
         webview.addJavascriptInterface(this, "Android")
         this.webview = webview
         return this
