@@ -46,14 +46,14 @@ class CereModule(private val context: Context) {
         val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=v1.0.0"
         Log.i(TAG, "load url ${url}")
         this.initStatus = InitStatus.Initialising
-        this.webview?.loadUrl(url)
+        this.webview.loadUrl(url)
     }
 
     private fun configureWebView(): CereModule {
         val webview = WebView(context)
-        webview.settings?.javaScriptEnabled = true
-        webview.settings?.domStorageEnabled = true
-        webview.settings?.databaseEnabled = true
+        webview.settings.javaScriptEnabled = true
+        webview.settings.domStorageEnabled = true
+        webview.settings.databaseEnabled = true
         WebView.setWebContentsDebuggingEnabled(true)
 
         webview.addJavascriptInterface(this, "Android")
@@ -74,8 +74,8 @@ class CereModule(private val context: Context) {
                             console.log(`${eventType} sending error` + err);
                         });
                 })();""".trimIndent()
-            webview?.evaluateJavascript(script)
-            { _ ->
+            webview.evaluateJavascript(script)
+            {
                 Log.i(TAG, "send event $eventType executed")
             }
         }

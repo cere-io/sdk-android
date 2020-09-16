@@ -22,19 +22,19 @@ class WebviewActivity : AppCompatActivity() {
     }
 
     private fun attachBridgeView() {
-        if (webview?.getParent() == null) {
+        if (webview.parent == null) {
             root.addView(webview)
-            val params = webview?.getLayoutParams() as RelativeLayout.LayoutParams
+            val params = webview.layoutParams as RelativeLayout.LayoutParams
             params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
             params.width = MATCH_PARENT
             params.height = MATCH_PARENT
-            webview?.setLayoutParams(params)
+            webview.layoutParams = params
         }
     }
 
     private fun detachBridgeView() {
-        if (webview != null && webview?.getParent() != null) {
-            (webview?.getParent() as ViewGroup).removeAllViews()
+        if (webview.parent != null) {
+            (webview.parent as ViewGroup).removeAllViews()
         }
     }
 
