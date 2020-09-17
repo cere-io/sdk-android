@@ -19,6 +19,45 @@ interface OnInitializationFinishedHandler {
     fun handle()
 }
 
+/**
+ * This is the main class which incapsulates all logic (opening/closing activity etc) and
+ * provides high-level methods to manipulate with.
+ **
+ * <p>All you need to start working with the class is to instantiate <tt>CereModule</tt> once and
+ * initialize it with 2 params. Example:
+ * </p>
+ *
+ * <p>
+ *     <pre>
+ *         {@code
+ *              CereModule cereModule = CereModule.getInstance(context);
+ *              cereModule.init("Your appId", "Your integrationPartnerUserId");
+ *         }
+ *     </pre>
+ * </p>
+ *
+ * <p>That's enough for start loading {@code CereModule}, but note that {@code CereModule} still
+ * remains hidden. Also, first load of {@code CereModule} takes a some time which depends on
+ * network connection quality. That's why you need to init {@code CereModule} as soon as possible.
+ * </p>
+ *
+ * <p>If you want to show {@code CereModule} right after it has initialized, you can add listener
+ * {@see OnInitializationFinishedHandler} implementation which will invoke method <tt>sendEvent</tt> on
+ * {@code CereModule} instance. Example:
+ * </p>
+ *
+ * <p>
+ *     <pre>
+ *         {@code
+ *              cereModule.onInitializationFinishedHandler(() -> {
+ *                  cereModule.sendEvent("APP_LAUNCHED_TEST", "{}");
+ *              });
+ *         }
+ *     </pre>
+ * </p>
+ *
+ * @author  Rudolf Markulin
+ */
 class CereModule(private val context: Context) {
 
     companion object {
@@ -51,10 +90,19 @@ class CereModule(private val context: Context) {
     private lateinit var integrationPartnerUserId: String
 
     private var initStatus: InitStatus = InitStatus.Uninitialised
+
+    /**
+     * @return current sdk initialisation status instance of {@code InitStatus}
+     */
     fun getInitStatus(): InitStatus {
         return this.initStatus
     }
 
+    /**
+     * Initializes and prepares the SDK for usage.
+     * @param appId: identifier of the application from RXB.
+     * @param integrationPartnerUserId: The user’s id in the system.
+     */
     fun init(appId: String, integrationPartnerUserId: String) {
         this.appId = appId
         this.integrationPartnerUserId = integrationPartnerUserId
@@ -76,7 +124,12 @@ class CereModule(private val context: Context) {
         return this
     }
 
-    fun sendEvent(eventType: String, payload: String) {
+    /**
+     * Send event to RXB.
+     * @param eventType: Type of event. For example `APP_LAUNCHED`.
+     * @param payload: Optional parameter which can be passed with event. It should contain serialised json payload associated with eventType.
+     */
+    fun sendEvent(eventType: String, payload: String = "") {
         if (this.initStatus == InitStatus.Initialised) {
             val script = """
                 (async function() {
