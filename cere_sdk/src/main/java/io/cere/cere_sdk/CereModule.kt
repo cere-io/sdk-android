@@ -15,7 +15,7 @@ const val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
 /**
  * Interface used after `CereModule` init method.
  */
-interface OnInitializationHandler {
+interface OnInitializationFinishedHandler {
     fun handle()
 }
 
@@ -40,7 +40,7 @@ class CereModule(private val context: Context) {
         }
     }
 
-    var onInitializationHandler: OnInitializationHandler = object: OnInitializationHandler {
+    var onInitializationFinishedHandler: OnInitializationFinishedHandler = object: OnInitializationFinishedHandler {
         override fun handle() {
 
         }
@@ -113,7 +113,7 @@ class CereModule(private val context: Context) {
     fun sdkInitialized() {
         Log.i(TAG, "sdk initialised")
         this.initStatus = InitStatus.Initialised
-        onInitializationHandler.handle()
+        onInitializationFinishedHandler.handle()
     }
 
     @JavascriptInterface
