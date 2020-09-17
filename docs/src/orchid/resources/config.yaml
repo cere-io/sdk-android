@@ -2,6 +2,11 @@ kotlindoc:
   sourceDirs:
     - './../../../../cere_sdk/src/main/java'
 
+site:
+  about:
+    siteName: Cere SDK
+    siteDescription: This is a short description of this project.
+
 Editorial:
   primaryColor: '#DE9149'
   legacySearch: false
