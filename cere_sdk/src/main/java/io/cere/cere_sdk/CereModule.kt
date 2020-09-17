@@ -9,6 +9,13 @@ import android.webkit.WebView
 
 const val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
 
+/**
+ * Interface used after `CereModule` init method.
+ */
+interface OnInitializationHandler {
+    fun handle()
+}
+
 class CereModule(private val context: Context) {
 
     companion object {
@@ -30,6 +37,11 @@ class CereModule(private val context: Context) {
         }
     }
 
+    var onInitializationHandler: OnInitializationHandler = object: OnInitializationHandler {
+        override fun handle() {
+
+        }
+    }
 
     lateinit var webview: WebView
     private lateinit var appId: String
@@ -74,9 +86,13 @@ class CereModule(private val context: Context) {
                             console.log(`${eventType} sending error` + err);
                         });
                 })();""".trimIndent()
-            webview.evaluateJavascript(script)
-            {
-                Log.i(TAG, "send event $eventType executed")
+            Log.e(TAG, "Calling evaluate 2")
+            webview.post{
+                Log.e(TAG, "evaluate javascript 2")
+                webview.evaluateJavascript(script)
+                {
+                    Log.i(TAG, "send event $eventType executed")
+                }
             }
         }
     }
@@ -92,6 +108,7 @@ class CereModule(private val context: Context) {
     fun sdkInitialized() {
         Log.i(TAG, "sdk initialised")
         this.initStatus = InitStatus.Initialised
+        onInitializationHandler.handle()
     }
 
     @JavascriptInterface
