@@ -3,11 +3,12 @@ package io.cere.cere_sdk
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 
-import java.util.concurrent.CountDownLatch
 
 const val baseUrl: String = "https://5448d01cf48d.ngrok.io/native.html"
 
@@ -88,17 +89,16 @@ class CereModule(private val context: Context) {
                             console.log(`${eventType} sending error` + err);
                         });
                 })();""".trimIndent()
-            Log.e(TAG, "Calling evaluate 2")
-            val latch = CountDownLatch(1)
-            webview.post{
-                Log.e(TAG, "evaluate javascript 2")
+
+            val handler = Handler(Looper.getMainLooper())
+
+            handler.post{
+                Log.e(TAG, "evaluate send event javascript")
                 webview.evaluateJavascript(script)
                 {
                     Log.i(TAG, "send event $eventType executed")
                 }
-                latch.countDown()
             }
-            latch.await()
         }
     }
 
