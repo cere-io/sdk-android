@@ -1,2 +1,2 @@
-include ':app', ':cere_sdk'
+include ':app', ':cere_sdk', ':docs'
 rootProject.name='sdk_android'
