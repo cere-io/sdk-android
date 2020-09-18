@@ -110,7 +110,7 @@ class CereModule(private val context: Context) {
     private val version: String = context.packageManager.getPackageInfo(context.packageName, 0).versionName
 
     /**
-     * @return current sdk initialisation status instance of {@code InitStatus}
+     * @return current sdk initialization status instance of {@code InitStatus}
      */
     fun getInitStatus(): InitStatus {
         return this.initStatus
