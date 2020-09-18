@@ -14,9 +14,18 @@ const val baseUrl: String = "http://sdk-common.cere.io.s3-website-us-west-2.amaz
 
 /**
  * Interface used after `CereModule` init method.
+ * Executed after successful initialization.
  */
 interface OnInitializationFinishedHandler {
     fun handle()
+}
+
+/**
+ * Interface used after `CereModule` init method.
+ * Executed after initialization error.
+ */
+interface OnInitializationErrorHandler {
+    fun handle(error: String)
 }
 
 /**
@@ -85,6 +94,12 @@ class CereModule(private val context: Context) {
         }
     }
 
+    var onInitializationErrorHandler: OnInitializationErrorHandler = object: OnInitializationErrorHandler {
+        override fun handle(error: String) {
+
+        }
+    }
+
     lateinit var webview: WebView
     private lateinit var appId: String
     private lateinit var integrationPartnerUserId: String
@@ -145,13 +160,14 @@ class CereModule(private val context: Context) {
 
             val handler = Handler(Looper.getMainLooper())
 
-            handler.post{
+            //todo: remove postDelayed after event queue is added to sdk
+            handler.postDelayed({
                 Log.e(TAG, "evaluate send event javascript")
                 webview.evaluateJavascript(script)
                 {
                     Log.i(TAG, "send event $eventType executed")
                 }
-            }
+            }, 3000)
         }
     }
 
@@ -173,5 +189,6 @@ class CereModule(private val context: Context) {
     fun sdkInitializedError(error: String) {
         Log.i(TAG, "sdk initialise error: $error")
         this.initStatus = InitStatus.InitialiseError(error)
+        onInitializationErrorHandler.handle(error)
     }
 }
