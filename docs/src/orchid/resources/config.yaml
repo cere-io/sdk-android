@@ -11,7 +11,7 @@ Editorial:
   primaryColor: '#DE9149'
   legacySearch: false
   social:
-    github: 'username/project'
+    github: 'cere-io/sdk-android'
   metaComponents:
     - type: 'orchidSearch'
   menu:
