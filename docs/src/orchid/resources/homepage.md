@@ -1,4 +1,4 @@
-# Setup
+## Setup
 
 Minimal supported android SDK version is KITKAT.
 ```
@@ -23,7 +23,7 @@ dependencies {
 }
 ```
 
-# Initialization
+## Initialization
 
 Initialize CereModule inside your custom Application class, and call init method on CereModule with appId and integrationPartnerUserId. 
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-# Send events
+## Send events
 
 Call cereModule.sendEvent to trigger your event with custom payload.
 
@@ -90,7 +90,7 @@ For quick integration test, you can use "APP_LAUNCHED_TEST" event, which will tr
   this.cereModule.sendEvent("APP_LAUNCHED_TEST", "{}");
 ```
 
-# Example application
+## Example application
 
 Take a look on [Example application](https://github.com/cere-io/sdk-android-example).
 
