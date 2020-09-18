@@ -101,10 +101,13 @@ class CereModule(private val context: Context) {
     }
 
     lateinit var webview: WebView
+
     private lateinit var appId: String
     private lateinit var integrationPartnerUserId: String
 
     private var initStatus: InitStatus = InitStatus.Uninitialised
+
+    private val version: String = context.packageManager.getPackageInfo(context.packageName, 0).versionName
 
     /**
      * @return current sdk initialisation status instance of {@code InitStatus}
@@ -121,7 +124,7 @@ class CereModule(private val context: Context) {
     fun init(appId: String, integrationPartnerUserId: String) {
         this.appId = appId
         this.integrationPartnerUserId = integrationPartnerUserId
-        val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=v1.0.0"
+        val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=${version}"
         Log.i(TAG, "load url ${url}")
         this.initStatus = InitStatus.Initialising
         this.webview.loadUrl(url)
