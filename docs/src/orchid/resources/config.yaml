@@ -29,3 +29,10 @@ Editorial:
       node: 'packages'
       asSubmenu: true
       submenuTitle: 'Packages'
+
+services:
+  publications:
+    stages:
+      - type: 'githubPages'
+        username: 'sahataba' # todo: change it
+        repo: 'cere-io/sdk-android'
