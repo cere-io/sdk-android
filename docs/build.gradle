@@ -21,6 +21,6 @@ repositories {
 // 4. Use the 'Editorial' theme, and set the URL it will have on Github Pages
 orchid {
     theme = "Editorial"
-    baseUrl = "https://username.github.io/project"
+    baseUrl = "https://cere-io.github.io/sdk-android"
     version = "1.0.0"
 }
