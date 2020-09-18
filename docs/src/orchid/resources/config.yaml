@@ -11,7 +11,7 @@ Editorial:
   primaryColor: '#DE9149'
   legacySearch: false
   social:
-    github: 'username/project'
+    github: 'cere-io/sdk-android'
   metaComponents:
     - type: 'orchidSearch'
   menu:
@@ -29,3 +29,10 @@ Editorial:
       node: 'packages'
       asSubmenu: true
       submenuTitle: 'Packages'
+
+services:
+  publications:
+    stages:
+      - type: 'githubPages'
+        username: 'sahataba' # todo: change it
+        repo: 'cere-io/sdk-android'
