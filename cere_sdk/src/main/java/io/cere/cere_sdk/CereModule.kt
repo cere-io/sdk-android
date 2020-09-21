@@ -107,7 +107,7 @@ class CereModule(private val context: Context) {
 
     private var initStatus: InitStatus = InitStatus.Uninitialised
 
-    private val version: String = context.packageManager.getPackageInfo(context.packageName, 0).versionName
+    private val version: String = io.cere.cere_sdk.BuildConfig.VERSION_NAME
 
     /**
      * @return current sdk initialization status instance of {@code InitStatus}
