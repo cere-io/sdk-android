@@ -21,9 +21,14 @@ android {
     }
 
     buildTypes {
+        def environment = '\"prod"' //dev stage prod
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        buildTypes.each {
+            it.buildConfigField 'String', 'environment', environment
+            it.resValue 'string', 'environment', environment
         }
     }
 

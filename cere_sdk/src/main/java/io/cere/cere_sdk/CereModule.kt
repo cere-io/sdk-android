@@ -122,9 +122,10 @@ class CereModule(private val context: Context) {
      * @param integrationPartnerUserId: The user’s id in the system.
      */
     fun init(appId: String, integrationPartnerUserId: String) {
+        val env = BuildConfig.environment
         this.appId = appId
         this.integrationPartnerUserId = integrationPartnerUserId
-        val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=${version}"
+        val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=${version}&env=${env}"
         Log.i(TAG, "load url ${url}")
         this.initStatus = InitStatus.Initialising
         this.webview.loadUrl(url)
