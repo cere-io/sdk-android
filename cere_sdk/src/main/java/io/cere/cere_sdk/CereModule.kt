@@ -178,6 +178,7 @@ class CereModule(private val context: Context) {
     fun engagementReceived() {
         Log.i(TAG, "engagement received on android")
         val intent = Intent(context, WebviewActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
 
