@@ -6,8 +6,6 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.webkit.WebView
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.webview_activity.*
-
 
 class WebviewActivity : AppCompatActivity() {
 
@@ -15,21 +13,16 @@ class WebviewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.webview_activity)
         this.setFinishOnTouchOutside(true)
-        this.webview = CereModule.getInstance(this.application).webview
-        attachBridgeView()
+        attachBridgeView(CereModule.getInstance(this.application).webview)
     }
 
-    private fun attachBridgeView() {
-        if (webview.parent == null) {
-            root.addView(webview)
-            val params = webview.layoutParams as RelativeLayout.LayoutParams
-            params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
-            params.width = MATCH_PARENT
-            params.height = MATCH_PARENT
-            webview.layoutParams = params
-        }
+    private fun attachBridgeView(wv: WebView) {
+        val params = RelativeLayout.LayoutParams(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
+        params.width = MATCH_PARENT
+        params.height = MATCH_PARENT
+        webview = wv
+        setContentView(wv, params)
     }
 
     private fun detachBridgeView() {
