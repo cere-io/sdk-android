@@ -164,14 +164,13 @@ class CereModule(private val context: Context) {
 
             val handler = Handler(Looper.getMainLooper())
 
-            //todo: remove postDelayed after event queue is added to sdk
-            handler.postDelayed({
-                Log.e(TAG, "evaluate send event javascript")
+            handler.post{
+                Log.i(TAG, "evaluate send event javascript")
                 webview.evaluateJavascript(script)
                 {
                     Log.i(TAG, "send event $eventType executed")
                 }
-            }, 3000)
+            }
         }
     }
 
