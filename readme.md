@@ -5,6 +5,7 @@ Using standard approach of publishing to gh-pages branch.
 To check documentation locally before publishing use:
 ```
 ./gradlew :docs:orchidRun
+./gradlew :docs:orchidServe
 
 ```
 
@@ -24,9 +25,7 @@ export githubToken=slfgkhlkhslkdfhlsd
 
 See [dcendents](https://github.com/dcendents/android-maven-gradle-plugin)
 
-On github project go to releases and create new release with same version as in cere_sdk/build.gradle
+On github project go to releases and create new release with same version as in root build.gradle
 ```
-defaultConfig{
-  versionName "1.0.0"
-}
+project.ext.set("versionName", "1.0.0")
 ```
