@@ -136,7 +136,7 @@ class CereModule(private val context: Context) {
         webview.settings.javaScriptEnabled = true
         webview.settings.domStorageEnabled = true
         webview.settings.databaseEnabled = true
-        WebView.setWebContentsDebuggingEnabled(true)
+        //WebView.setWebContentsDebuggingEnabled(true)
 
         webview.addJavascriptInterface(this, "Android")
         this.webview = webview
