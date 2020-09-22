@@ -25,7 +25,7 @@ dependencies {
 
 ## Initialization
 
-Initialize CereModule inside your custom Application class, and call init method on CereModule with appId and integrationPartnerUserId. 
+Initialize CereModule inside your custom Application class, and call init method on CereModule with appId, integrationPartnerUserId and onboarding access token. 
 
 ```java
 package io.cere.sdk_android_example;
@@ -53,7 +53,7 @@ public class CustomApplication extends Application {
             this.cereModule.setOnInitializationErrorHandler((String error) -> {
                     Log.e(TAG, error);
             });
-            this.cereModule.init("242", "userID");
+            this.cereModule.init("242", "userID", "some access token");
         }
     }
 }
