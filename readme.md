@@ -1,3 +1,11 @@
+## Release notes
+### vNext
+*
+### v1.1.0
+* Add optional onboarding token parameter to init method
+### v1.0.0
+* First release
+
 ## Building documentation
 For building documentation we use [orchid](https://orchid.run/)
 Using standard approach of publishing to gh-pages branch.
@@ -12,12 +20,12 @@ To check documentation locally before publishing use:
 Before running orchid deploy configure your githubToken.
 
 ```
-export githubToken=slfgkhlkhslkdfhlsd 
+export githubToken=slfgkhlkhslkdfhlsd
 ```
 
 ```
 ./gradlew :docs:orchidDeploy -PorchidEnvironment=prod
-``` 
+```
 
 [Documentation site](https://cere-io.github.io/sdk-android/)
 
