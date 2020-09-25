@@ -14,16 +14,21 @@ android {
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 2
-        versionName "1.01"
+        versionName project.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
+        def environment = '"prod"' //dev stage prod
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        buildTypes.each {
+            it.buildConfigField 'String', 'environment', environment
+            it.resValue 'string', 'environment', environment
         }
     }
 

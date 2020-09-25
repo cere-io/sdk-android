@@ -2,6 +2,19 @@
 For building documentation we use [orchid](https://orchid.run/)
 Using standard approach of publishing to gh-pages branch.
 
+To check documentation locally before publishing use:
+```
+./gradlew :docs:orchidRun
+./gradlew :docs:orchidServe
+
+```
+
+Before running orchid deploy configure your githubToken.
+
+```
+export githubToken=slfgkhlkhslkdfhlsd 
+```
+
 ```
 ./gradlew :docs:orchidDeploy -PorchidEnvironment=prod
 ``` 
@@ -11,3 +24,8 @@ Using standard approach of publishing to gh-pages branch.
 ## Library publishing
 
 See [dcendents](https://github.com/dcendents/android-maven-gradle-plugin)
+
+On github project go to releases and create new release with same version as in root build.gradle
+```
+project.ext.set("versionName", "1.0.0")
+```

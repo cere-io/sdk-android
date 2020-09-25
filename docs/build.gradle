@@ -22,5 +22,5 @@ repositories {
 orchid {
     theme = "Editorial"
     baseUrl = "https://cere-io.github.io/sdk-android"
-    version = "1.0.0"
+    version = project.versionName
 }

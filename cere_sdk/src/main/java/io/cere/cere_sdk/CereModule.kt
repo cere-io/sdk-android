@@ -107,7 +107,7 @@ class CereModule(private val context: Context) {
 
     private var initStatus: InitStatus = InitStatus.Uninitialised
 
-    private val version: String = context.packageManager.getPackageInfo(context.packageName, 0).versionName
+    private val version: String = io.cere.cere_sdk.BuildConfig.VERSION_NAME
 
     /**
      * @return current sdk initialization status instance of {@code InitStatus}
@@ -122,9 +122,10 @@ class CereModule(private val context: Context) {
      * @param integrationPartnerUserId: The user’s id in the system.
      */
     fun init(appId: String, integrationPartnerUserId: String) {
+        val env = BuildConfig.environment
         this.appId = appId
         this.integrationPartnerUserId = integrationPartnerUserId
-        val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=${version}"
+        val url = "${baseUrl}?appId=${appId}&integrationPartnerUserId=${integrationPartnerUserId}&platform=android&version=${version}&env=${env}"
         Log.i(TAG, "load url ${url}")
         this.initStatus = InitStatus.Initialising
         this.webview.loadUrl(url)
@@ -135,7 +136,7 @@ class CereModule(private val context: Context) {
         webview.settings.javaScriptEnabled = true
         webview.settings.domStorageEnabled = true
         webview.settings.databaseEnabled = true
-        WebView.setWebContentsDebuggingEnabled(true)
+        //WebView.setWebContentsDebuggingEnabled(true)
 
         webview.addJavascriptInterface(this, "Android")
         this.webview = webview
@@ -163,14 +164,13 @@ class CereModule(private val context: Context) {
 
             val handler = Handler(Looper.getMainLooper())
 
-            //todo: remove postDelayed after event queue is added to sdk
-            handler.postDelayed({
-                Log.e(TAG, "evaluate send event javascript")
+            handler.post{
+                Log.i(TAG, "evaluate send event javascript")
                 webview.evaluateJavascript(script)
                 {
                     Log.i(TAG, "send event $eventType executed")
                 }
-            }, 3000)
+            }
         }
     }
 
@@ -178,6 +178,7 @@ class CereModule(private val context: Context) {
     fun engagementReceived() {
         Log.i(TAG, "engagement received on android")
         val intent = Intent(context, WebviewActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
 
