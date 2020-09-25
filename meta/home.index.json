@@ -1,0 +1,31 @@
+{
+  "ownKey": "home",
+  "ownPages": [
+    {
+      "reference": {
+        "path": "",
+        "baseUrl": "https://cere-io.github.io/sdk-android",
+        "fileName": "",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://cere-io.github.io/sdk-android"
+      },
+      "description": "",
+      "title": "Home",
+      "content": "<h2 id=\"setup\"><a href=\"#setup\" id=\"setup\" class=\"anchor\"><\/a>Setup<\/h2>\n<p>Minimal supported android SDK version is KITKAT.<\/p>\n<pre><code>minSdkVersion 19\n<\/code><\/pre>\n<p>Add jitpack repository to build.gradle file.<\/p>\n<pre><code>allprojects {\n    repositories {\n        maven { url 'https://jitpack.io' }\n    }\n}\n<\/code><\/pre>\n<p>Add kotlin library and cere_sdk library dependencies to your /app/build.gradle file.<\/p>\n<pre><code>dependencies {\n    api            &quot;org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72&quot;\n    implementation &quot;com.github.cere-io:sdk-android:0.1&quot;\n}\n<\/code><\/pre>\n<h2 id=\"initialization\"><a href=\"#initialization\" id=\"initialization\" class=\"anchor\"><\/a>Initialization<\/h2>\n<p>Initialize CereModule inside your custom Application class, and call init method on CereModule with appId, integrationPartnerUserId and onboarding access token.<\/p>\n<pre><code class=\"language-java\">package io.cere.sdk_android_example;\n\nimport android.app.Application;\nimport android.util.Log;\n\nimport io.cere.cere_sdk.CereModule;\nimport io.cere.cere_sdk.InitStatus;\n\npublic class CustomApplication extends Application {\n    private static String TAG = &quot;CustomApplication&quot;;\n    private CereModule cereModule = null;\n    public void onCreate() {\n        super.onCreate();\n        if (CereModule.getInstance(this).getInitStatus() == InitStatus.Initialised.INSTANCE) {\n            this.cereModule = CereModule.getInstance(this);\n        } else {\n            //you can handle other initialization statuses (Uninitialized, Initializing, InitializationError)\n            this.cereModule = CereModule.getInstance(this);\n            this.cereModule.setOnInitializationFinishedHandler(() -&gt; {\n                this.cereModule.sendEvent(&quot;APP_LAUNCHED_TEST&quot;, &quot;{'locationId': 10}&quot;);\n                return;\n            });\n            this.cereModule.setOnInitializationErrorHandler((String error) -&gt; {\n                    Log.e(TAG, error);\n            });\n            this.cereModule.init(&quot;242&quot;, &quot;userID&quot;, &quot;some access token&quot;);\n        }\n    }\n}\n<\/code><\/pre>\n<p>Inside your MainActivity get an singleton instance of CereModule.<\/p>\n<pre><code class=\"language-java\">package io.cere.sdk_android_example;\n\nimport androidx.appcompat.app.AppCompatActivity;\nimport io.cere.cere_sdk.CereModule;\n\npublic class MainActivity extends AppCompatActivity {\n\n    private CereModule cereModule;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_main);\n        this.cereModule = CereModule.getInstance(this.getApplication());\n    }\n}\n<\/code><\/pre>\n<h2 id=\"send-events\"><a href=\"#send-events\" id=\"send-events\" class=\"anchor\"><\/a>Send events<\/h2>\n<p>Call cereModule.sendEvent to trigger your event with custom payload.<\/p>\n<p>For quick integration test, you can use &quot;APP_LAUNCHED_TEST&quot; event, which will trigger display of &quot;Hello world!&quot; text inside android modal dialog.<\/p>\n<pre><code class=\"language-java\">  this.cereModule.sendEvent(&quot;APP_LAUNCHED_TEST&quot;, &quot;{}&quot;);\n<\/code><\/pre>\n<h2 id=\"example-application\"><a href=\"#example-application\" id=\"example-application\" class=\"anchor\"><\/a>Example application<\/h2>\n<p>Take a look on <a href=\"https://github.com/cere-io/sdk-android-example\">Example application<\/a>.<\/p>\n"
+    },
+    {
+      "reference": {
+        "path": "",
+        "baseUrl": "https://cere-io.github.io/sdk-android",
+        "fileName": "404",
+        "extension": "html",
+        "usePrettyUrl": false,
+        "link": "https://cere-io.github.io/sdk-android/404.html"
+      },
+      "description": "",
+      "title": "Not Found",
+      "content": ""
+    }
+  ]
+}

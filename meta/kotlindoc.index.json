@@ -1,0 +1,189 @@
+{
+  "ownKey": "kotlindoc",
+  "childrenPages": {"kotlindoc": {
+    "ownKey": "kotlindoc",
+    "childrenPages": {"io": {
+      "ownKey": "io",
+      "childrenPages": {"cere": {
+        "ownKey": "cere",
+        "childrenPages": {"cere_sdk": {
+          "ownKey": "cere_sdk",
+          "childrenPages": {
+            "initstatus": {
+              "ownKey": "initstatus",
+              "childrenPages": {
+                "uninitialised": {
+                  "ownKey": "uninitialised",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://cere-io.github.io/sdk-android",
+                      "fileName": "io/cere/cere_sdk/initstatus/uninitialised",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/uninitialised"
+                    },
+                    "description": "",
+                    "title": "Uninitialised",
+                    "content": ""
+                  }]
+                },
+                "initialising": {
+                  "ownKey": "initialising",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://cere-io.github.io/sdk-android",
+                      "fileName": "io/cere/cere_sdk/initstatus/initialising",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/initialising"
+                    },
+                    "description": "",
+                    "title": "Initialising",
+                    "content": ""
+                  }]
+                },
+                "initialised": {
+                  "ownKey": "initialised",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://cere-io.github.io/sdk-android",
+                      "fileName": "io/cere/cere_sdk/initstatus/initialised",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/initialised"
+                    },
+                    "description": "",
+                    "title": "Initialised",
+                    "content": ""
+                  }]
+                },
+                "initialiseerror": {
+                  "ownKey": "initialiseerror",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://cere-io.github.io/sdk-android",
+                      "fileName": "io/cere/cere_sdk/initstatus/initialiseerror",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/initialiseerror"
+                    },
+                    "description": "",
+                    "title": "InitialiseError",
+                    "content": "<p>error<\/p>\n<p><init><\/p>\n"
+                  }]
+                }
+              },
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc",
+                  "baseUrl": "https://cere-io.github.io/sdk-android",
+                  "fileName": "io/cere/cere_sdk/initstatus",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus"
+                },
+                "description": "",
+                "title": "InitStatus",
+                "content": ""
+              }]
+            },
+            "oninitializationerrorhandler": {
+              "ownKey": "oninitializationerrorhandler",
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc",
+                  "baseUrl": "https://cere-io.github.io/sdk-android",
+                  "fileName": "io/cere/cere_sdk/oninitializationerrorhandler",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/oninitializationerrorhandler"
+                },
+                "description": "",
+                "title": "OnInitializationErrorHandler",
+                "content": "<p>Interface used after <code>CereModule<\/code> init method.\nExecuted after initialization error.<\/p>handle\n"
+              }]
+            },
+            "webviewactivity": {
+              "ownKey": "webviewactivity",
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc",
+                  "baseUrl": "https://cere-io.github.io/sdk-android",
+                  "fileName": "io/cere/cere_sdk/webviewactivity",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/webviewactivity"
+                },
+                "description": "",
+                "title": "WebviewActivity",
+                "content": "<p><init><\/p>\n<p>onCreate<\/p>\n<p>onDestroy<\/p>\n"
+              }]
+            },
+            "oninitializationfinishedhandler": {
+              "ownKey": "oninitializationfinishedhandler",
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc",
+                  "baseUrl": "https://cere-io.github.io/sdk-android",
+                  "fileName": "io/cere/cere_sdk/oninitializationfinishedhandler",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/oninitializationfinishedhandler"
+                },
+                "description": "",
+                "title": "OnInitializationFinishedHandler",
+                "content": "<p>Interface used after <code>CereModule<\/code> init method.\nExecuted after successful initialization.<\/p>handle\n"
+              }]
+            },
+            "ceremodule": {
+              "ownKey": "ceremodule",
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc",
+                  "baseUrl": "https://cere-io.github.io/sdk-android",
+                  "fileName": "io/cere/cere_sdk/ceremodule",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/ceremodule"
+                },
+                "description": "",
+                "title": "CereModule",
+                "content": "<p>This is the main class which incapsulates all logic (opening/closing activity etc) and\nprovides high-level methods to manipulate with.<\/p>onInitializationFinishedHandler\n<p>onInitializationErrorHandler<\/p>\n<p>webview<\/p>\n<p><init><\/p>\n<p>This is the main class which incapsulates all logic (opening/closing activity etc) and\nprovides high-level methods to manipulate with.<\/p>\ngetInitStatus\n<p>init<\/p>\n<p>Initializes and prepares the SDK for usage.<\/p>\nsendEvent\n<p>Send event to RXB.<\/p>\nengagementReceived\n<p>sdkInitialized<\/p>\n<p>sdkInitializedError<\/p>\n<p>CereModule<\/p>\n<p>This is the main class which incapsulates all logic (opening/closing activity etc) and\nprovides high-level methods to manipulate with.<\/p>\n"
+              }]
+            }
+          },
+          "ownPages": [{
+            "reference": {
+              "path": "kotlindoc",
+              "baseUrl": "https://cere-io.github.io/sdk-android",
+              "fileName": "io/cere/cere_sdk",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk"
+            },
+            "description": "",
+            "title": "io.cere.cere_sdk",
+            "content": "<p>OnInitializationFinishedHandler<\/p>\n<p>Interface used after <code>CereModule<\/code> init method.\nExecuted after successful initialization.<\/p>\nOnInitializationErrorHandler\n<p>Interface used after <code>CereModule<\/code> init method.\nExecuted after initialization error.<\/p>\nCereModule\n<p>This is the main class which incapsulates all logic (opening/closing activity etc) and\nprovides high-level methods to manipulate with.<\/p>\nInitStatus\n<p>WebviewActivity<\/p>\n<p>baseUrl<\/p>\n"
+          }]
+        }}
+      }}
+    }},
+    "ownPages": [{
+      "reference": {
+        "path": "kotlindoc",
+        "baseUrl": "https://cere-io.github.io/sdk-android",
+        "fileName": "",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://cere-io.github.io/sdk-android/kotlindoc"
+      },
+      "description": "",
+      "title": "Readme",
+      "content": "<h2 id=\"building-documentation\"><a href=\"#building-documentation\" id=\"building-documentation\" class=\"anchor\"><\/a>Building documentation<\/h2>\n<p>For building documentation we use <a href=\"https://orchid.run/\">orchid<\/a>\nUsing standard approach of publishing to gh-pages branch.<\/p>\n<p>To check documentation locally before publishing use:<\/p>\n<pre><code>./gradlew :docs:orchidRun\n./gradlew :docs:orchidServe\n\n<\/code><\/pre>\n<p>Before running orchid deploy configure your githubToken.<\/p>\n<pre><code>export githubToken=slfgkhlkhslkdfhlsd \n<\/code><\/pre>\n<pre><code>./gradlew :docs:orchidDeploy -PorchidEnvironment=prod\n<\/code><\/pre>\n<p><a href=\"https://cere-io.github.io/sdk-android/\">Documentation site<\/a><\/p>\n<h2 id=\"library-publishing\"><a href=\"#library-publishing\" id=\"library-publishing\" class=\"anchor\"><\/a>Library publishing<\/h2>\n<p>See <a href=\"https://github.com/dcendents/android-maven-gradle-plugin\">dcendents<\/a><\/p>\n<p>On github project go to releases and create new release with same version as in root build.gradle<\/p>\n<pre><code>project.ext.set(&quot;versionName&quot;, &quot;1.0.0&quot;)\n<\/code><\/pre>\n"
+    }]
+  }}
+}

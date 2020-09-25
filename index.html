@@ -1,0 +1,431 @@
+<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.0"/>
+<link rel="icon" href="https://cere-io.github.io/sdk-android/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Home</title>
+
+
+<meta name="description" content="This is a short description of this project.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://cere-io.github.io/sdk-android/assets/css/orchidSearch.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.0","baseUrl":"https://cere-io.github.io/sdk-android","environment":"prod","version":"1.1.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+</head>
+<body class="is-loading">
+
+
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            
+                <header id="header">
+    <a href="https://cere-io.github.io/sdk-android" class="logo">Cere SDK</a>
+    <ul class="icons">
+    
+    
+        <li>
+            <a href="https://github.com/cere-io/sdk-android" class="icon fa-github">
+                <span class="label">github</span>
+            </a>
+        </li>
+    
+    
+    </ul>
+</header>
+
+            
+            
+            
+            
+                <section id="pageContent">
+                    <header class="major"><h2>Home</h2></header>
+                    <article>
+                        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <h2 id="setup"><a href="#setup" id="setup" class="anchor"></a>Setup</h2>
+<p>Minimal supported android SDK version is KITKAT.</p>
+<pre><code>minSdkVersion 19
+</code></pre>
+<p>Add jitpack repository to build.gradle file.</p>
+<pre><code>allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+</code></pre>
+<p>Add kotlin library and cere_sdk library dependencies to your /app/build.gradle file.</p>
+<pre><code>dependencies {
+    api            &quot;org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72&quot;
+    implementation &quot;com.github.cere-io:sdk-android:0.1&quot;
+}
+</code></pre>
+<h2 id="initialization"><a href="#initialization" id="initialization" class="anchor"></a>Initialization</h2>
+<p>Initialize CereModule inside your custom Application class, and call init method on CereModule with appId, integrationPartnerUserId and onboarding access token.</p>
+<pre><code class="language-java">package io.cere.sdk_android_example;
+
+import android.app.Application;
+import android.util.Log;
+
+import io.cere.cere_sdk.CereModule;
+import io.cere.cere_sdk.InitStatus;
+
+public class CustomApplication extends Application {
+    private static String TAG = &quot;CustomApplication&quot;;
+    private CereModule cereModule = null;
+    public void onCreate() {
+        super.onCreate();
+        if (CereModule.getInstance(this).getInitStatus() == InitStatus.Initialised.INSTANCE) {
+            this.cereModule = CereModule.getInstance(this);
+        } else {
+            //you can handle other initialization statuses (Uninitialized, Initializing, InitializationError)
+            this.cereModule = CereModule.getInstance(this);
+            this.cereModule.setOnInitializationFinishedHandler(() -&gt; {
+                this.cereModule.sendEvent(&quot;APP_LAUNCHED_TEST&quot;, &quot;{'locationId': 10}&quot;);
+                return;
+            });
+            this.cereModule.setOnInitializationErrorHandler((String error) -&gt; {
+                    Log.e(TAG, error);
+            });
+            this.cereModule.init(&quot;242&quot;, &quot;userID&quot;, &quot;some access token&quot;);
+        }
+    }
+}
+</code></pre>
+<p>Inside your MainActivity get an singleton instance of CereModule.</p>
+<pre><code class="language-java">package io.cere.sdk_android_example;
+
+import androidx.appcompat.app.AppCompatActivity;
+import io.cere.cere_sdk.CereModule;
+
+public class MainActivity extends AppCompatActivity {
+
+    private CereModule cereModule;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        this.cereModule = CereModule.getInstance(this.getApplication());
+    }
+}
+</code></pre>
+<h2 id="send-events"><a href="#send-events" id="send-events" class="anchor"></a>Send events</h2>
+<p>Call cereModule.sendEvent to trigger your event with custom payload.</p>
+<p>For quick integration test, you can use &quot;APP_LAUNCHED_TEST&quot; event, which will trigger display of &quot;Hello world!&quot; text inside android modal dialog.</p>
+<pre><code class="language-java">  this.cereModule.sendEvent(&quot;APP_LAUNCHED_TEST&quot;, &quot;{}&quot;);
+</code></pre>
+<h2 id="example-application"><a href="#example-application" id="example-application" class="anchor"></a>Example application</h2>
+<p>Take a look on <a href="https://github.com/cere-io/sdk-android-example">Example application</a>.</p>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+                    </article>
+                </section>
+            
+        </div>
+        <hr>
+
+        <!-- Page Footer -->
+        <div class="inner">
+    <footer id="footer">
+        <div class="clearfix">
+            
+            
+        </div>
+    </footer>
+</div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+    <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+            <form data-orchid-search="">
+                <input type="text" name="query" id="query" placeholder="Search"/>
+            </form>
+            <div class="box" id="search-results" data-orchid-search-results style="display: none;">
+                <b>Search Results</b>
+                <ul></ul>
+            </div>
+            <div class="box" id="search-progress" data-orchid-search-progress style="display: none;">
+                <div class="loader">Loading...</div>
+            </div>
+        </section>
+
+        <!-- Menu -->
+        <nav id="siteNav" class="menu">
+            <header class="major">
+                <h2>Cere SDK</h2>
+            </header>
+            <ul class="top-level">
+                
+                    
+    
+    <li>
+        <a class="subheader">API Docs</a>
+    </li>
+    
+
+                
+                    
+    <li>
+        <span class="opener">Classes</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/ceremodule">CereModule</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus">InitStatus</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/initialiseerror">InitialiseError</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/initialised">Initialised</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/initialising">Initialising</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/oninitializationerrorhandler">OnInitializationErrorHandler</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/oninitializationfinishedhandler">OnInitializationFinishedHandler</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/uninitialised">Uninitialised</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/webviewactivity">WebviewActivity</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">Packages</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk">io.cere.cere_sdk</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+            </ul>
+        </nav>
+        
+
+        <!-- Section -->
+        <section>
+            <p class="text-center">
+                Currently 1.1.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright text-center">&copy; Cere SDK. All rights reserved.<br>Design by <a href="https://html5up.net">HTML5 UP</a></p>
+        </footer>
+
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+
+<!-- start:inject scripts -->
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/ajax/libs/skel/3.0.1/skel.min.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/js/editorial_util.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/js/editorial_main.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/lunr/lunr.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/assets/js/orchidSearch.js"></script>
+<!-- end:inject scripts -->
+
+
+</body>
+</html>

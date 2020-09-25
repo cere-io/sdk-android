@@ -1,0 +1,1133 @@
+<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.0"/>
+<link rel="icon" href="https://cere-io.github.io/sdk-android/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>CereModule</title>
+
+
+<meta name="description" content="This is a short description of this project.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://cere-io.github.io/sdk-android/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://cere-io.github.io/sdk-android/assets/css/orchidSourceDoc.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.0","baseUrl":"https://cere-io.github.io/sdk-android","environment":"prod","version":"1.1.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+</head>
+<body class="is-loading">
+
+
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            
+                <header id="header">
+    <a href="https://cere-io.github.io/sdk-android" class="logo">Cere SDK</a>
+    <ul class="icons">
+    
+    
+        <li>
+            <a href="https://github.com/cere-io/sdk-android" class="icon fa-github">
+                <span class="label">github</span>
+            </a>
+        </li>
+    
+    
+    </ul>
+</header>
+
+            
+            
+            
+            
+                <section id="pageContent">
+                    <header class="major"><h2>CereModule</h2></header>
+                    <article>
+                        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="CereModule">
+
+
+  
+
+  
+    <div class="sourcedoc-section section-element" id="8e37a41ad2e66a303d76e14ed6fc4701ad33e8b4">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>class CereModule: Any</code>
+      </p>
+
+      
+        
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>This is the main class which incapsulates all logic (opening/closing activity etc) and
+provides high-level methods to manipulate with.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="fields">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="50f8cdb9ca6018c8909b440c382ef2617ecd6f13">
+        <td class="sourcedoc-section section-signature">
+          <code>var onInitializationFinishedHandler: OnInitializationFinishedHandler</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="55a3a1866a998d4d60aee1155f454d3e10f32af4">
+        <td class="sourcedoc-section section-signature">
+          <code>var onInitializationErrorHandler: OnInitializationErrorHandler</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="d01f29d61d356269e7d1ab21f67db3fd00ff9fa0">
+        <td class="sourcedoc-section section-signature">
+          <code>lateinit var webview: WebView</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="constructors">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Constructors</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="80132e1738ffa1eecfdc64cd96ea95a3e6ea3630">
+      
+      <h3 class="sourcedoc-section element-name">&lt;init&gt;</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>constructor(context: Context)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>This is the main class which incapsulates all logic (opening/closing activity etc) and
+provides high-level methods to manipulate with.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="92797d51b17d79577dff11dd3a13504877351854">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="8483d8f3d3fb1b5709f52d824b12f88d466ff528">
+        <td class="sourcedoc-section section-signature">
+          <code>context: Context</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="42dca4572290ef0f63765576f7eaec5f0669c3ab">
+      
+      <h3 class="sourcedoc-section element-name">getInitStatus</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun getInitStatus(): InitStatus</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1c39ed71c28c35d4190017e670d1eb2ce21c5a14">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0ddc74f6252e9d2bc56e5abbd5df7f2d271a17bf">
+        <td class="sourcedoc-section section-signature">
+          <code>InitStatus</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>current sdk initialization status instance of {@code InitStatus}</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e658c5170726292ef4d6a2342893d35cc0cd5521">
+      
+      <h3 class="sourcedoc-section element-name">init</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun init(appId: String, integrationPartnerUserId: String, token: String)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Initializes and prepares the SDK for usage.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="46402804f05de7a3ffbf95ead6f949fa57ad1f36">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5c0a9899243604a244efd77894424c853dd3a159">
+        <td class="sourcedoc-section section-signature">
+          <code>appId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>: identifier of the application from RXB.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="de620154f378809d70ca1896ccabc1f3c6027c44">
+        <td class="sourcedoc-section section-signature">
+          <code>integrationPartnerUserId: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>: The user’s id in the system.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b44f29a8bbd1414c026591b065b0b5bafcdd3b30">
+        <td class="sourcedoc-section section-signature">
+          <code>token: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>: The user’s onboarding access token in the system.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f33c3c5915f27a6985a9187012935b70ceaeba43">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="d0c6e3b33a477ff8b87cd54e2f1194f9663a0e43">
+      
+      <h3 class="sourcedoc-section element-name">sendEvent</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun sendEvent(eventType: String, payload: String)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Send event to RXB.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="06a02c61703aa9cf2d4d730bd1312e09ca205135">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="34046d276bef0cfc64aba0c68cc894b9dacdea82">
+        <td class="sourcedoc-section section-signature">
+          <code>eventType: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>: Type of event. For example <code>APP_LAUNCHED</code>.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="25367e766039d41a6b9fa647f6f0d2ec9020cce6">
+        <td class="sourcedoc-section section-signature">
+          <code>payload: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>: Optional parameter which can be passed with event. It should contain serialised json payload associated with eventType.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9ad7be899e73dfdb8279a2bc6ff39a30057e0090">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="689d40816aac6a1b98d699dd5b32b00950c5dfad">
+      
+      <h3 class="sourcedoc-section element-name">engagementReceived</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun engagementReceived()</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="36dafac7bc897c6de4b61894c78b01ef5556a10e">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="ea0fb9611a4c69a77f70a0f6f615dafa473ddf12">
+      
+      <h3 class="sourcedoc-section element-name">sdkInitialized</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun sdkInitialized()</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="052a9d707c94af569e62d6ce6abbfb31dcffd355">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="946102399e8b7d55b24d103ae36da5925fdeaa70">
+      
+      <h3 class="sourcedoc-section element-name">sdkInitializedError</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun sdkInitializedError(error: String)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8e27b80c67cbb899ebc7807687ca5bf979c8bda9">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="926caded4b0f3824a222062763aae08b4f694e10">
+        <td class="sourcedoc-section section-signature">
+          <code>error: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b9138cecfca6866c0f20525550b8810b79904314">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="companionObject">
+
+
+  
+    <h2 class="sourcedoc-section section-name">CompanionObject</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="8e37a41ad2e66a303d76e14ed6fc4701ad33e8b4">
+      
+      <h3 class="sourcedoc-section element-name">CereModule</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>class CereModule: Any</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>This is the main class which incapsulates all logic (opening/closing activity etc) and
+provides high-level methods to manipulate with.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="fb747970c28c83aa632159e047f875d0aa158654">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d2493c93310298266541025794bd7584b17eb8f1">
+        <td class="sourcedoc-section section-signature">
+          <code>const TAG: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="966259e9da10bca03ada3b7eeedb2234a5761fe3">
+
+
+  
+    <h3 class="sourcedoc-section section-name">Methods</h3>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="01d43606cd28e252a56e0502714960a89fed7337">
+      
+      <h4 class="sourcedoc-section element-name">getInstance</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun getInstance(application: Application): CereModule</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="1eb127c222506b8e9f3c8fe546be6be05618f4ac">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="412c64f4b25ba93b4ae9d51cf46f5163a74a8325">
+        <td class="sourcedoc-section section-signature">
+          <code>application: Application</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="b5c3a6ca740d8b9f96b2d1a71bfb41f8585644da">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e528671b8b8bc5b1ea2b15608226bae368269075">
+        <td class="sourcedoc-section section-signature">
+          <code>CereModule</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+                    </article>
+                </section>
+            
+        </div>
+        <hr>
+
+        <!-- Page Footer -->
+        <div class="inner">
+    <footer id="footer">
+        <div class="clearfix">
+            
+            
+        </div>
+    </footer>
+</div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+    <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+            <form data-orchid-search="">
+                <input type="text" name="query" id="query" placeholder="Search"/>
+            </form>
+            <div class="box" id="search-results" data-orchid-search-results style="display: none;">
+                <b>Search Results</b>
+                <ul></ul>
+            </div>
+            <div class="box" id="search-progress" data-orchid-search-progress style="display: none;">
+                <div class="loader">Loading...</div>
+            </div>
+        </section>
+
+        <!-- Menu -->
+        <nav id="siteNav" class="menu">
+            <header class="major">
+                <h2>Cere SDK</h2>
+            </header>
+            <ul class="top-level">
+                
+                    
+    
+    <li>
+        <a class="subheader">API Docs</a>
+    </li>
+    
+
+                
+                    
+    <li>
+        <span class="opener">Classes</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/ceremodule">CereModule</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus">InitStatus</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/initialiseerror">InitialiseError</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/initialised">Initialised</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/initialising">Initialising</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/oninitializationerrorhandler">OnInitializationErrorHandler</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/oninitializationfinishedhandler">OnInitializationFinishedHandler</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/initstatus/uninitialised">Uninitialised</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk/webviewactivity">WebviewActivity</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">Packages</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="https://cere-io.github.io/sdk-android/kotlindoc/io/cere/cere_sdk">io.cere.cere_sdk</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+            </ul>
+        </nav>
+        
+
+        <!-- Section -->
+        <section>
+            <p class="text-center">
+                Currently 1.1.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright text-center">&copy; Cere SDK. All rights reserved.<br>Design by <a href="https://html5up.net">HTML5 UP</a></p>
+        </footer>
+
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+
+<!-- start:inject scripts -->
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/ajax/libs/skel/3.0.1/skel.min.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/js/editorial_util.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/js/editorial_main.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/Editorial/9b9724da/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/lunr/lunr.js"></script>
+<script  src="https://cere-io.github.io/sdk-android/assets/js/orchidSearch.js"></script>
+<!-- end:inject scripts -->
+
+
+</body>
+</html>
